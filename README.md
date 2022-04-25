@@ -4,15 +4,21 @@
 
 # Gdpr
 
-[![Gem Version](https://badge.fury.io/rb/gdpr.svg)](http://badge.fury.io/rb/gdpr)
-[![Alchemists Style Guide](https://img.shields.io/badge/code_style-alchemists-brightgreen.svg)](https://www.alchemists.io/projects/code_quality)
+[![Gem Version](https://badge.fury.io/rb/gdpr-ruby.svg)](http://badge.fury.io/rb/gdpr-ruby)
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
 ## Table of Contents
 
+  - [TODO](#todo)
   - [Features](#features)
-  - [Screencasts](#screencasts)
+    - [Configuration](#configuration)
+    - [Rails generator](#rails-generator)
+    - [Schema less](#schema-less)
+    - [Linting](#linting)
+    - [Export](#export)
+    - [Anonymise](#anonymise)
+    - [Fake data](#fake-data)
   - [Requirements](#requirements)
   - [Setup](#setup)
   - [Usage](#usage)
@@ -27,20 +33,66 @@
 
 <!-- Tocer[finish]: Auto-generated, don't remove. -->
 
+## TODO
+
+Boilerplate
+- [ ] Remove Thor from gemspec & cli
+- [ ] Make sure gdpr-ruby name change works: add spec skeleton
+- [ ] Setup combustion
+- [ ] test DB + User model + assocations (belongs_to, has_many)
+
+Refactorings
+- [ ] Split core logic + DSL and make it independant from Rails. Add core-ext if `activesupport` is not defined
 ## Features
 
-## Screencasts
+DSL
+```ruby
 
+```
+### Configuration
+
+### Rails generator
+```
+bin/rails generate gdpr User
+```
+
+### Schema less
+
+### Linting
+
+```ruby
+  describe "#lint" do
+    Gdpr:::Linter.lint.each do |kls, response|
+      specify "#{kls} model gdpr definition" do
+        expect(response.errors).to be_empty, "#{kls}: #{response.errors.inspect}"
+      end
+    end
+  end
+```
+
+### Export
+- JSON
+- user files zipped
+- AWS Zip
+
+### Anonymise
+
+*Coming later!*
+### Fake data
+
+*Coming later!*
 ## Requirements
 
 1. [Ruby](https://www.ruby-lang.org)
+2. Rails
 
 ## Setup
 
 To install, run:
 
-    gem install gdpr
-
+```
+    gem install gdpr-ruby
+```
 
 ## Usage
 
@@ -91,5 +143,4 @@ Built with [Gemsmith](https://www.alchemists.io/projects/gemsmith).
 
 ## Credits
 
-Developed by [Jean-Michel Garnier]() at
-[]().
+Developed by [Arnaud Sellenet](https://www.github.com/enerfip-dev) at [Enerfip](https://www.enerfip.fr).
