@@ -3,7 +3,7 @@
 module Gdpr
   # Gem identity information.
   module Identity
-    NAME = "gdpr"
+    NAME = "gdpr-ruby"
     LABEL = "Gdpr"
     VERSION = "0.1.0"
     VERSION_LABEL = "#{LABEL} #{VERSION}"

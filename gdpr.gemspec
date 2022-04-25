@@ -6,17 +6,17 @@ Gem::Specification.new do |spec|
   spec.name = Gdpr::Identity::NAME
   spec.version = Gdpr::Identity::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.authors = ["Jean-Michel Garnier"]
-  spec.email = ["jean-michel@21croissants.com"]
-  spec.homepage = "https://github.com/jmgarnier/gdpr"
-  spec.summary = ""
+  spec.authors = ["Arnaud Sellenet"]
+  spec.email = ["arnaud@enerfip.fr"]
+  spec.homepage = "https://github.com/enerfip/gdpr-ruby"
+  spec.summary = "DSL to export GDPR data for a Ruby / Rails project"
   spec.license = "MIT"
 
   spec.metadata = {
-    "bug_tracker_uri" => "https://github.com/jmgarnier/gdpr/issues",
-    "changelog_uri" => "https://github.com/jmgarnier/gdpr/blob/master/CHANGES.md",
-    "documentation_uri" => "https://github.com/jmgarnier/gdpr",
-    "source_code_uri" => "https://github.com/jmgarnier/gdpr"
+    "bug_tracker_uri" => "https://github.com/enerfip/gdpr-ruby/issues",
+    "changelog_uri" => "https://github.com/enerfip/gdpr-ruby/blob/master/CHANGES.md",
+    "documentation_uri" => "https://github.com/enerfip/gdpr-ruby",
+    "source_code_uri" => "https://github.com/enerfip/gdpr-ruby"
   }
 
 
