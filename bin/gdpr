@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+require "gdpr"
+require "gdpr/cli"
+require "gdpr/identity"
+
+Process.setproctitle Gdpr::Identity::VERSION_LABEL
+Gdpr::CLI.start
