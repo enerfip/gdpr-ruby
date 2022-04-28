@@ -42,7 +42,7 @@ Boilerplate
 - [ ] test DB + User model + assocations (belongs_to, has_many)
 
 Refactorings
-- [ ] Split core logic + DSL and make it independant from Rails. Add core-ext if `activesupport` is not defined
+- [ ] Split core logic + DSL and make it independant from Rails. Add core-ext if `activesupport` is not defined. Use [dry constantize](https://rubydoc.info/gems/dry-inflector/Dry/Inflector#constantize-instance_method)
 ## Features
 
 DSL
@@ -77,10 +77,10 @@ bin/rails generate gdpr User
 
 ### Anonymise
 
-*Coming later!*
+*Coming soon!*
 ### Fake data
 
-*Coming later!*
+*Coming soon!*
 ## Requirements
 
 1. [Ruby](https://www.ruby-lang.org)
@@ -100,8 +100,8 @@ To install, run:
 
 To contribute, run:
 
-    git clone https://github.com/jmgarnier/gdpr.git
-    cd gdpr
+    git clone https://github.com/enerfip/gdpr-ruby.git
+    cd gdpr-ruby
     bin/setup
 
 You can also use the IRB console for direct access to all objects:
