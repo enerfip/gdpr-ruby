@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-Bundler.require :tools
+
+Bundler.require :tools, :development, :test
+
+Dotenv.load
+
+Combustion.initialize! :active_record
+
+require 'rspec/rails'
 
 require "simplecov"
 SimpleCov.start { enable_coverage :branch }
@@ -32,4 +39,6 @@ RSpec.configure do |config|
     mocks.verify_doubled_constant_names = true
     mocks.verify_partial_doubles = true
   end
+
+  config.use_transactional_fixtures = true
 end

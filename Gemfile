@@ -16,10 +16,14 @@ end
 group :development do
   gem "gemsmith", "~> 15.5"
   gem "rake", "~> 13.0"
+  gem 'combustion', '~> 1.3'
 end
 
 group :test do
   gem "rspec", "~> 3.9"
+  gem "rspec-rails"
+  gem "pg"
+  gem "dotenv"
 end
 
 group :tools do
