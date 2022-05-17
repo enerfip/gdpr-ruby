@@ -80,6 +80,9 @@ However, `gdpr-ruby` will not be able to lint these models.
 Gdpr linter relies on your database schema to make sure every database fields and associations are listed either
 as personal or non personal fields.
 
+#### How to use it
+
+Add a `_spec.rb` file  (e.g. gdpr_linter_spec.rb) in your test suite with this describe block:
 ```ruby
   describe "#lint" do
     Gdpr:::Linter.lint.each do |kls, response|
