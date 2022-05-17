@@ -37,10 +37,9 @@
 ## TODO
 
 Boilerplate
-- [ ] Remove Thor from gemspec & cli
-- [ ] Make sure gdpr-ruby name change works: add spec skeleton
-- [ ] Setup combustion
 - [ ] test DB + User model + assocations (belongs_to, has_many)
+- [ ] Do we really need a `config.ru` file for a Rack app???
+- [ ] Remove Thor from gemspec & cli ?
 
 Refactorings
 - [ ] Split core logic + DSL and make it independant from Rails. Add core-ext if `activesupport` is not defined. Use [dry constantize](https://rubydoc.info/gems/dry-inflector/Dry/Inflector#constantize-instance_method)
