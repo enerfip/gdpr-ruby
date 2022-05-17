@@ -1,0 +1,45 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: gdpr_test
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+      CI: true
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.0"]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Run RSpec
+      run: |
+        echo "DATABASE_URL=postgres://postgres:postgres@localhost:5432/gdpr_test" > .env
+        bundle exec rspec
