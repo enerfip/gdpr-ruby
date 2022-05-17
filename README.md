@@ -12,6 +12,7 @@
 
   - [TODO](#todo)
   - [Features](#features)
+    - [Installing](#installing)
     - [Configuration](#configuration)
     - [Rails generator](#rails-generator)
     - [Schema less](#schema-less)
@@ -43,23 +44,45 @@ Boilerplate
 
 Refactorings
 - [ ] Split core logic + DSL and make it independant from Rails. Add core-ext if `activesupport` is not defined. Use [dry constantize](https://rubydoc.info/gems/dry-inflector/Dry/Inflector#constantize-instance_method)
-## Features
 
 DSL
 ```ruby
 
 ```
+### Installing
+
+#### Rails application
+
+* Add this gem to your Gemfile (you may make the gem available for all environments)
+
+```rb
+  gem "gdpr-ruby"
+```
+
+* Run `rails generate gdpr:install` *Coming soon!*
+* Run `rails generate gdpr User` *Coming soon!*
+* Run `rspec spec/models/gdpr_linter_spec.rb` and update your gdpr definitions until linter is green.
+
+
 ### Configuration
 
-### Rails generator
-```
-bin/rails generate gdpr User
-```
+*Coming soon!*
 
 ### Schema less
 
+You can define gdpr models for your schemaless models (e.g. PG Jsonb fields).
+However, `gdpr-ruby` will not be able to lint these models.
+
+## Features
+
 ### Linting
 
+Gdpr linter relies on your database schema to make sure every database fields and associations are listed either
+as personal or non personal fields.
+
+#### How to use it
+
+Add a `_spec.rb` file  (e.g. gdpr_linter_spec.rb) in your test suite with this describe block:
 ```ruby
   describe "#lint" do
     Gdpr:::Linter.lint.each do |kls, response|
