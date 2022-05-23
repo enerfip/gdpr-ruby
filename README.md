@@ -11,12 +11,13 @@
 ## Table of Contents
 
   - [TODO](#todo)
-  - [Features](#features)
-    - [Installing](#installing)
+  - [Installing](#installing)
+    - [Rails application](#rails-application)
     - [Configuration](#configuration)
-    - [Rails generator](#rails-generator)
+  - [Features](#features)
     - [Schema less](#schema-less)
     - [Linting](#linting)
+      - [How to use it](#how-to-use-it)
     - [Export](#export)
     - [Anonymise](#anonymise)
     - [Fake data](#fake-data)
@@ -48,9 +49,9 @@ DSL
 ```ruby
 
 ```
-### Installing
+## Installing
 
-#### Rails application
+### Rails application
 
 * Add this gem to your Gemfile (you may make the gem available for all environments)
 
@@ -67,12 +68,68 @@ DSL
 
 *Coming soon!*
 
+## Features
+
+### DSL
+
+gdpr-ruby DSL mimics ActiveRecord's DSL so you can mirror easily your data model with Gdpr definitions.
+
+To use DSL, include it in your Gdpr definition classes, example:
+
+```rb
+module Gdpr::Model:::User
+  include Gdpr::ModeDsl
+
+  personal do
+     # defining personal attributes here
+  end
+ 
+  non_personal do
+     # defining non personal attributes here (they are never exported nor anonymized)
+  end
+end
+```
+
+All attributes and associations of any model handling personal data will have its Gdpr definition class, namespaced `Gdpr::Model`.
+So if you have a `User` model, you will need to create a `Gdpr::Model::User` class including the `Gdpr::ModelDsl` module.
+
+And EVERY field and association MUST appear in either the `Gdpr::Model::User`'s `personal` or `non_personal` block.
+Yes, the initial boilerplate may be painful, but this guarantees that no field will be forgotten when adding it to your schema.
+
+`Gdpr::ModelDsl` provides the following class methods:
+
+* `personal` and `non_personal`, both methods accept a block without arguments.
+* `attributes`: any regular attribute except: foreign keys, files, jsonb attributes can be specified here
+* `file`: each attribute that stores a file path must be specified with this method. Currently only Carrierwave is supported
+* `hash`: json/jsonb data can be declared with this method, and you can specify a schema-less class to define Gdpr data inside this attribute.
+* `has_many`, `has_one` and `belongs_to`: to declare associations (will infer foreign key from your ORM - only ActiveRecord supported for now)
+
+#### Example Model Definition
+
+```rb
+
+class User < ApplicationRecord; end
+
+class Gdpr::Model::User
+  include Gdpr::ModelDsl
+
+  personal do
+    attributes :email, :last_sign_in_ip, :last_signed_in_at
+    file :profile_picture
+    has_many :comments  
+    hash :settings, class: Gdpr::Model::User::Settings
+  end
+
+  non_personal do
+    attributes :id, :created_at, :updated_at, :encrypted_password
+  end
+end
+```
+
 ### Schema less
 
 You can define gdpr models for your schemaless models (e.g. PG Jsonb fields).
 However, `gdpr-ruby` will not be able to lint these models.
-
-## Features
 
 ### Linting
 
