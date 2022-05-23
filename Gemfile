@@ -14,7 +14,6 @@ group :code_quality do
 end
 
 group :development do
-  gem "gemsmith", "~> 15.5"
   gem "rake", "~> 13.0"
   gem 'combustion', '~> 1.3'
 end
