@@ -1,8 +1,20 @@
-inherit_from:
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/main/configurations/rubocop/ruby.yml
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/main/configurations/rubocop/rake.yml
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/main/configurations/rubocop/performance.yml
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/main/configurations/rubocop/rspec.yml
+require:
+  - rubocop-rspec
+  - rubocop-performance
 
-Lint/Void:
-  CheckForMethodsWithNoSideEffects: false
+AllCops:
+  NewCops: enable
+
+Style/StringLiterals:
+  Description: 'Checks if uses of quotes match the configured preference.'
+  StyleGuide: '#consistent-string-literals'
+  Enabled: false
+  VersionAdded: '0.9'
+  VersionChanged: '0.36'
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  # If `true`, strings which span multiple lines using `\` for continuation must
+  # use the same type of quotes on each line.
+  ConsistentQuotesInMultiline: false
