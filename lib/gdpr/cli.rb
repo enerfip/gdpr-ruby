@@ -15,11 +15,11 @@ module Gdpr
       Runcom::Config.new "#{Identity::NAME}/configuration.yml"
     end
 
-    def initialize args = [], options = {}, config = {}
+    def initialize(args = [], options = {}, config = {})
       super args, options, config
       @configuration = self.class.configuration
-    rescue Runcom::Errors::Base => error
-      abort error.message
+    rescue Runcom::Errors::Base => e
+      abort e.message
     end
 
     desc "-c, [--config]", "Manage gem configuration."
@@ -37,10 +37,11 @@ module Gdpr
     def config
       path = configuration.current
 
-      if options.edit? then `#{ENV["EDITOR"]} #{path}`
+      if options.edit? then `#{ENV.fetch("EDITOR", nil)} #{path}`
       elsif options.info?
-        path ? say(path) : say("Configuration doesn't exist.")
-      else help :config
+        say(path || "Configuration doesn't exist.")
+      else
+        help :config
       end
     end
 
@@ -52,7 +53,7 @@ module Gdpr
 
     desc "-h, [--help=COMMAND]", "Show this message or get help for a command."
     map %w[-h --help] => :help
-    def help task = nil
+    def help(task = nil)
       say and super
     end
 

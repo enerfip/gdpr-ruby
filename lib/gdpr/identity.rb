@@ -6,6 +6,6 @@ module Gdpr
     NAME = "gdpr-ruby"
     LABEL = "Gdpr"
     VERSION = "0.1.0"
-    VERSION_LABEL = "#{LABEL} #{VERSION}"
+    VERSION_LABEL = "#{LABEL} #{VERSION}".freeze
   end
 end

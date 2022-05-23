@@ -14,15 +14,15 @@ group :code_quality do
 end
 
 group :development do
-  gem "rake", "~> 13.0"
   gem 'combustion', '~> 1.3'
+  gem "rake", "~> 13.0"
 end
 
 group :test do
+  gem "dotenv"
+  gem "pg"
   gem "rspec", "~> 3.9"
   gem "rspec-rails"
-  gem "pg"
-  gem "dotenv"
 end
 
 group :tools do

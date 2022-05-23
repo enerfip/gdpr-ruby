@@ -16,9 +16,9 @@ Gem::Specification.new do |spec|
     "bug_tracker_uri" => "https://github.com/enerfip/gdpr-ruby/issues",
     "changelog_uri" => "https://github.com/enerfip/gdpr-ruby/blob/master/CHANGES.md",
     "documentation_uri" => "https://github.com/enerfip/gdpr-ruby",
-    "source_code_uri" => "https://github.com/enerfip/gdpr-ruby"
+    "source_code_uri" => "https://github.com/enerfip/gdpr-ruby",
+    'rubygems_mfa_required' => 'true'
   }
-
 
   spec.required_ruby_version = "~> 3.0"
   spec.add_dependency "runcom", "~> 7.0"
