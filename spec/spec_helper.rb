@@ -18,7 +18,7 @@ require "gdpr"
 GC.auto_compact = true
 GC.verify_compaction_references double_heap: true, toward: :empty
 
-Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].sort.each { |path| require path }
+Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].each { |path| require path }
 
 RSpec.configure do |config|
   config.color = true
