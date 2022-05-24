@@ -142,8 +142,8 @@ class Gdpr::Model::User
   end
 end
 
-# app/models/gdpr/model/settings.rb
-class Gdpr::Model::Settings
+# app/models/gdpr/model/user/settings.rb
+class Gdpr::Model::User::Settings
   include Gdpr::ModelDsl
 
   # TODO implementation
