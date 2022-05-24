@@ -5,3 +5,6 @@ pkg/*
 Gemfile.lock
 tmp
 .env
+.rbenv
+.ruby-version
+coverage
