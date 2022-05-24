@@ -8,3 +8,6 @@ set -o pipefail
 IFS=$'\n\t'
 
 bundle install
+cp .env.sample .env
+echo "Edit your .env file to specify your local Postgres credentials"
+rake
